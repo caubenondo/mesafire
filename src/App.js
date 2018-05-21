@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import "./App.css";
 import firebase from "./config/firebase";
+import NewItemForm from './component/new-item-form'
+
 const db = firebase.database();
 class App extends Component {
   state = {
@@ -39,12 +41,15 @@ class App extends Component {
    
     console.log(this.state.view);
   };
+
+  updateData = () =>{}
   render() {
     return (
       <div className="App">
         <button onClick={this.addDataTofirebase}> add </button>
         <button onClick={this.loadData}> load </button>
-        <div className="view"> {this.state.view} </div>
+        
+        <NewItemForm data={this.state.view} submitForm={this.updateData}/>
       </div>
     );
   }
